@@ -2,7 +2,7 @@
   "name": "personal-chrome-extensions",
   "version": "1.0",
   "description": "Build an Extension!",
-  "permissions": ["activeTab", "declarativeContent", "storage"],
+  "permissions": ["tabs", "declarativeContent", "storage", "runtime"],
   "background": {
     "scripts": ["background.js"],
     "persistent": false
