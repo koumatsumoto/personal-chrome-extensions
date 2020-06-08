@@ -15,6 +15,7 @@
     "copy:html": "cp src/*.html dist",
     "copy:images": "cp images dist -R",
     "copy:manifest": "cp manifest.json dist/manifest.json",
+    "dev": "yarn prebuild && webpack --config webpack.config.dev.js",
     "diff": "git diff --exit-code --name-only .",
     "format": "yarn lint:ts --fix && prettier --config .prettierrc --write .",
     "lint:ts": "eslint 'src/**/*.ts'",

@@ -1,20 +1,28 @@
-const changeColor = document.getElementById('changeColor') as HTMLButtonElement;
-if (!changeColor) {
-  throw new Error('#changeColor not found');
-}
+import { addComment } from './internal/comments/comments';
+import { getCurrentActivePageInformation } from './internal/get-page-information';
 
-chrome.storage.sync.get('color', (data) => {
-  changeColor.style.backgroundColor = data.color;
-  changeColor.setAttribute('value', data.color);
-});
+const showComment = async () => {
+  const textarea = document.querySelector<HTMLTextAreaElement>('#comment');
+  if (!textarea) {
+    throw new Error('#comment is not found');
+  }
 
-changeColor.addEventListener('click', (event) => {
-  console.log('[dev] click event', event);
+  const page = await getCurrentActivePageInformation();
 
-  const color = (event.target as any).value;
-  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-    console.log('[dev] tabs', tabs);
-
-    chrome.tabs.executeScript(tabs[0].id!, { code: 'document.body.style.backgroundColor = "' + color + '";' });
+  addComment({
+    pageTitle: page.title,
+    pageUrl: page.url,
+    comment: textarea.value,
   });
-});
+};
+
+const main = () => {
+  const button = document.querySelector<HTMLButtonElement>('#showComment');
+  if (!button) {
+    throw new Error('#showComment is not found');
+  }
+
+  button.addEventListener('click', () => showComment());
+};
+
+main();
