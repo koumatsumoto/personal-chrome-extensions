@@ -2,7 +2,7 @@
   "name": "personal-chrome-extensions",
   "version": "1.0",
   "description": "Build an Extension!",
-  "permissions": ["tabs", "declarativeContent", "storage", "runtime"],
+  "permissions": ["tabs", "declarativeContent", "storage", "runtime", "webRequest", "*://scrapbox.io/"],
   "background": {
     "scripts": ["background.js"],
     "persistent": false

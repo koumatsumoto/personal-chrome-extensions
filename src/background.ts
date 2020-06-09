@@ -22,3 +22,17 @@ chrome.declarativeContent.onPageChanged.removeRules(undefined, () => {
 });
 
 receiveComment();
+
+chrome.webRequest.onBeforeSendHeaders.addListener(
+  (details) => {
+    for (let i = 0; i < details.requestHeaders!.length; ++i) {
+      if (details.requestHeaders![i].name === 'Origin') {
+        details.requestHeaders!.splice(i, 1);
+        break;
+      }
+    }
+    return { requestHeaders: details.requestHeaders };
+  },
+  { urls: ['*://scrapbox.io/'] },
+  ['blocking', 'requestHeaders'],
+);
