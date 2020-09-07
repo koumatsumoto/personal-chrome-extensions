@@ -2,7 +2,7 @@
   "name": "personal-chrome-extensions",
   "version": "1.0",
   "description": "Build an Extension!",
-  "permissions": ["tabs", "declarativeContent", "storage", "runtime"],
+  "permissions": ["tabs", "declarativeContent", "storage"],
   "background": {
     "scripts": ["background.js"],
     "persistent": false
@@ -25,13 +25,14 @@
   "options_page": "options.html",
   "manifest_version": 2,
   "commands": {
-    "open-search-box": {
+    "open_search_box": {
+      "description": "Open search form",
       "suggested_key": {
-        "default": "Ctrl+S",
-        "windows": "Ctrl+S",
-        "mac": "Command+S",
-        "chromeos": "Ctrl+S",
-        "linux": "Ctrl+S"
+        "default": "Ctrl+Q",
+        "windows": "Ctrl+Q",
+        "mac": "Command+Q",
+        "chromeos": "Ctrl+Q",
+        "linux": "Ctrl+Q"
       }
     }
   }
