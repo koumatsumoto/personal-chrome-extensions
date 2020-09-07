@@ -2,7 +2,7 @@
   "name": "personal-chrome-extensions",
   "version": "1.0",
   "description": "Build an Extension!",
-  "permissions": ["tabs", "declarativeContent", "storage", "runtime"],
+  "permissions": ["tabs", "declarativeContent", "storage"],
   "background": {
     "scripts": ["background.js"],
     "persistent": false
@@ -23,5 +23,17 @@
     "128": "images/get_started128.png"
   },
   "options_page": "options.html",
-  "manifest_version": 2
+  "manifest_version": 2,
+  "commands": {
+    "open_search_box": {
+      "description": "Open search form",
+      "suggested_key": {
+        "default": "Ctrl+Q",
+        "windows": "Ctrl+Q",
+        "mac": "Command+Q",
+        "chromeos": "Ctrl+Q",
+        "linux": "Ctrl+Q"
+      }
+    }
+  }
 }

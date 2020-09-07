@@ -1,4 +1,3 @@
-import { addComment } from './internal/comments/comments';
 import { getCurrentActivePageInformation } from './internal/get-page-information';
 
 const showComment = async () => {
@@ -9,10 +8,13 @@ const showComment = async () => {
 
   const page = await getCurrentActivePageInformation();
 
-  addComment({
-    pageTitle: page.title,
-    pageUrl: page.url,
-    comment: textarea.value,
+  chrome.runtime.sendMessage({
+    type: 'comment',
+    data: {
+      pageTitle: page.title,
+      pageUrl: page.url,
+      comment: textarea.value,
+    },
   });
 };
 

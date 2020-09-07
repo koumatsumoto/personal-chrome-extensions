@@ -38,7 +38,6 @@ module.exports = {
   },
   settings: {
     'import/extensions': ['.js', '.ts'],
-    'import/ignore': ['.html', '.svg'],
     'import/parsers': {
       '@typescript-eslint/parser': ['.ts'],
     },
