@@ -2,10 +2,20 @@
   "name": "personal-chrome-extensions",
   "version": "1.0",
   "description": "Build an Extension!",
-  "permissions": ["tabs", "declarativeContent", "storage", "runtime", "webRequest", "*://scrapbox.io/"],
+  "permissions": [
+    "storage",
+    "tabs",
+    "activeTab",
+    "webRequest",
+    "webRequestBlocking",
+    "webNavigation",
+    "debugger",
+    "https://*/",
+    "wss://*/"
+  ],
   "background": {
     "scripts": ["background.js"],
-    "persistent": false
+    "persistent": true
   },
   "page_action": {
     "default_popup": "popup.html",
