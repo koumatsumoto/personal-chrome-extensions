@@ -10,16 +10,16 @@
     "yarn": ">=1.22.0"
   },
   "scripts": {
-    "prebuild": "rm -fr dist && mkdir dist && yarn copy:manifest && yarn copy:html && yarn copy:images",
-    "build": "webpack --config webpack.config.prod.js",
-    "copy:html": "cp src/*.html dist",
-    "copy:images": "cp images dist -R",
-    "copy:manifest": "cp manifest.json dist/manifest.json",
-    "dev": "yarn prebuild && webpack --config webpack.config.dev.js",
-    "diff": "git diff --exit-code --name-only .",
-    "format": "yarn lint:ts --fix && prettier --config .prettierrc --write .",
-    "lint:ts": "eslint 'src/**/*.ts'",
-    "test": "yarn jest -c jest.config.js"
+    "build:prod": "yarn :build:prebuild && webpack --config webpack.config.prod.js",
+    "build:dev": "yarn :build:prebuild && webpack --config webpack.config.dev.js",
+    "lint:format": "eslint 'src/**/*.ts' --fix && prettier --config .prettierrc --write .",
+    "test": "yarn jest -c jest.config.js",
+    "// 1": "internal scripts",
+    ":build:prebuild": "rm -fr dist && mkdir dist && yarn :build:copy:manifest && yarn :build:copy:html && yarn :build:copy:images",
+    ":build:copy:html": "cp src/*.html dist",
+    ":build:copy:images": "cp images dist -R",
+    ":build:copy:manifest": "cp manifest.json dist/manifest.json",
+    ":lint:diff": "git diff --exit-code --name-only ."
   },
   "devDependencies": {
     "@babel/preset-env": "^7.10.2",
