@@ -23,5 +23,16 @@
     "128": "images/get_started128.png"
   },
   "options_page": "options.html",
-  "manifest_version": 2
+  "manifest_version": 2,
+  "commands": {
+    "open-search-box": {
+      "suggested_key": {
+        "default": "Ctrl+S",
+        "windows": "Ctrl+S",
+        "mac": "Command+S",
+        "chromeos": "Ctrl+S",
+        "linux": "Ctrl+S"
+      }
+    }
+  }
 }

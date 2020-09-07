@@ -1,5 +1,3 @@
-import { receiveComment } from './internal/comments/comments';
-
 chrome.runtime.onInstalled.addListener(() => {
   chrome.storage.sync.set({ color: '#3aa757' }, () => {
     console.log('The color is green.');
@@ -21,4 +19,6 @@ chrome.declarativeContent.onPageChanged.removeRules(undefined, () => {
   ]);
 });
 
-receiveComment();
+chrome.runtime.onMessage.addListener((message) => {
+  alert(JSON.stringify(message, null, 2));
+});
